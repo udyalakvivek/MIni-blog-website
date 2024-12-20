@@ -1,0 +1,58 @@
+{% extends "Base.html" %}
+{% load static %}
+
+
+{% block content %}
+<div class="col-10 offset-1 my-4 p-3 ">
+    <div class="row">
+        <div class="col">
+            <div class="text">
+                <h2 class="text text-center">
+                    <span class="text-warning fw-bold costum_family">
+                        ThankYou!
+                        <span class="text-bg-danger">
+                            {% if request.user.is_authenticated %}
+                            {{request.user.first_name}}
+                        </span>
+                        {% endif %}
+                        To read my Blog✌️✌️
+                    </span>
+                </h2>
+                <span>
+                    <p>
+
+                    </p>
+                </span>
+            </div>
+
+            <div class="card">
+                <div class="card-header text-warning fw-medium">
+                    {{posts.title}}
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p class=" costum_family2">{{posts.desc |title}}</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <footer class="blockquote-footer">
+                                    <cite title="Source Title" class="text-info">
+                                        Written by <span class="text-primary">{{posts.created_by|title}}</span>
+                                    </cite>
+                                </footer>
+                            </div>
+                            <div class="col-md-6 text-end">
+                                <a href="{% url 'home_page' %}" class="active_more btn btn-link">Back to</a>
+                            </div>
+                        </div>
+
+                    </blockquote>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>
+{% endblock content %}

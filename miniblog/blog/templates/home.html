@@ -1,0 +1,51 @@
+{% extends "Base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="col-10 offset-1 my-4 p-3 ">
+  <h3 class="text  text-center ">Enjoy the Articles
+
+    <span class="text-warning fw-bold costum_family">
+      {% if request.user.is_authenticated %}
+      {{ request.user.first_name |title }}
+      {% endif %}
+    </span>
+
+  </h3>
+  <div class="container mt-4 ">
+    {% for post in posts %}
+    <div class="card mb-4  ">
+      <div class="card-header lulu">
+        {{post.title|title}}
+      </div>
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p class="fs-6">
+            {{post.desc|truncatewords:100}}
+          </p>
+
+
+          <div class="row">
+            <div class="col-md-6">
+              <footer class="blockquote-footer text-info fw-medium">
+                <cite title="Source Author">{{post.created_by | title}}</cite>
+              </footer>
+            </div>
+            <div class="col-md-6 text-end">
+              <a href="{% url 'single_data' id=post.id %}" class="btn btn-link active_more  "><em>Read More</em></a>
+            </div>
+          </div>
+
+
+
+
+          <!-- <footer class="blockquote-footer text-info fw-medium"><cite title="Source Author">{{post.created_by |title}}</cite>
+          </footer> -->
+
+        </blockquote>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

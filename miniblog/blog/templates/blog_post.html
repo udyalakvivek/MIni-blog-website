@@ -1,0 +1,19 @@
+{% extends "Base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="col-12 col-md-8 offset-md-2 my-4 chulbul p-4 ">
+    <h3 class="text-center">Make Post</h3>
+    <form action="" method="post">
+        {% csrf_token %}
+
+        
+        {{blog_form.as_p}}
+        <button class="btn btn-outline-success" type="submit">Save Post</button>
+        <a href="{% url 'manage_post' %}"class="btn btn-outline-success">Back to manage post</a>
+        <a href="{% url 'home_page' %}"class="btn btn-outline-info">Back to home</a>
+    </form>
+</div>
+
+{% endblock %}
+    

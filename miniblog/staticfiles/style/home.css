@@ -1,0 +1,35 @@
+/* .test{
+    color: red;
+} */
+body {
+margin: 0;
+padding: 0;
+}
+
+
+
+
+
+
+/* 
+<!-- <div class="container mt-5 text-{{message.tags}}">
+        {% if messages %}
+        {% for message in messages %}
+        <script>
+            alert('{{ message}}');
+        </script>
+        {% endfor %}
+        {% endif %}
+    </div> -->  
+    <!-- <div class="col-8 offset-2 my-2">
+    {% if messages %}
+    {% for msg in messages %}
+    <div class="alert alert-{{msg.tags}} alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole!</strong> {{msg}}.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div> -->
+    
+    */

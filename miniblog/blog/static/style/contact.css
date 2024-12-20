@@ -1,0 +1,30 @@
+/* python manage.py collectstatic */
+
+label{
+    color: orange;
+    /* color: orangered; */
+}
+input{
+    color: #11cde6!important;
+    padding-left: 8px;
+}
+.style2{
+    box-shadow: none!important;
+    background-color: #44494e!important;
+    border: none!important;
+    outline: none!important;
+}
+.style3{
+    box-shadow: none!important;
+    /* background-color: #44494e!important; */
+    border: none!important;
+    outline: none!important;
+}
+
+#message{
+    border: none ;
+    outline: none;
+}
+
+
+

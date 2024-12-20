@@ -1,0 +1,65 @@
+{% extends "Base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-3 py-5  shadow chulbul ">
+    <div class="row">
+        <div class="col-10 offset-1 ">
+            <h3 class="text-center mb-2"> Wellcome!<span class=" text-primary fw-bold">
+                    {{request.user.first_name |title}}
+                </span></h3>
+            <div>
+                <a href="{% url 'create_blog' %}" class="btn btn-outline-success">Make Post</a>
+                <a href="{% url 'dashboard_page' %}" class="btn btn-outline-info ">Back to Dashboard</a>
+            </div>
+
+            <div class="row mt-3  shadow">
+
+                <div class="col right mt-3 ">
+                    {% if posts %}
+                    <table class="table table-hover">
+                        <thead class="text text-warning">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Author</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Date / Time</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for blog in posts %}
+                            <tr>
+                                <th scope="row">{{ blog.id }}</th>
+                                <td>{{ blog.created_by |title }}</td>
+                                <td>{{ blog.title |title }}</td>
+                                <td>
+                                    <small>{{ blog.created_at|date:"d M Y" }}
+                                        <span class="text-warning">
+                                            {{blog.created_at|date:"h:i A"}}
+                                        </span></small>
+                                </td>
+                                <td>
+                                    <a href="{% url 'edit_post' id=blog.id %}" class="btn btn-outline-info">Edit</a>
+                                    <a href="{% url 'delete_post' id=blog.id %}"
+                                        class="btn btn-outline-warning">Delete</a>
+
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <p>No posts available.</p>
+                    {% endif %}
+                    <div class="mt-auto text-end text-info fw-medium">
+                        <small>Post by {{request.user.first_name}}</small>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}

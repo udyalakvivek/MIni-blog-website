@@ -1,0 +1,54 @@
+{% extends "Base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-3 py-5   chulbul">
+  <div class="row">
+    <div class="col-10 offset-1 ">
+      <h3 class="text-center mb-2"> Wellcome!<span class=" text-primary costum_family">
+          {{request.user.first_name |title}}
+        </span></h3>
+      <div>
+        <a href="{% url 'manage_post' %}" class="btn btn-outline-warning">Manage Post</a>
+        <a href="{% url 'create_blog' %}" class=" btn btn-outline-success">Make Post</a>
+      </div>
+      <div class="row pt-4 pb-2 mt-3  shadow border border-1">
+        <div class="container dashboard-container">
+          <div class="text-center">
+            <label for="profile-pic-input">
+              <div class="profile-pic" id="profile-pic" title="Upload your profile picture">
+                <i class="fas fa-camera"></i>
+              </div>
+            </label>
+            <input type="file" id="profile-pic-input" style="display: none;">
+            <p class="m-1 text-warning  fs-5"><strong>{{request.user.first_name |title}} {{request.user.last_name |title}}</strong></p>
+          </div>
+          <div class="row mt-3 d-flex justify-content-center align-items-center">
+            <div class="col-6 text-center ">
+              <p><strong>Email id : </strong>{{request.user.email}}</p>
+              <p><strong>Username : </strong>{{request.user}}</p>
+            </div>
+            <div class="col-6 text-center ">
+              <p><strong>Location : </strong>Noida , Delhi</p>
+            <p><strong>User IP : </strong>127.5.741</p>
+            </div>
+
+      
+          </div>
+        </div>
+        <div class=" text-end">
+          <a href="#" class="btn btn-outline-warning">Password update</a>
+          <span>
+            <a href="{% url 'logout_page' %}" class="btn btn-outline-danger" id="logout_confirm2">Logout</a>
+            <form action="{% url 'logout_page' %}" method="post" class="d-none" id="logoutForm2">
+              {% csrf_token %}
+            </form>
+          </span>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

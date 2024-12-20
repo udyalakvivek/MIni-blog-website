@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg mt-4 sticky-top px-2 text-white " id="zindex">
+    <div class="container-fluid">
+        <a class="navbar-brand costum_family" href="#">MiniBlog</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                <li class="nav-item">
+                    <a class="nav-link
+                    {% if request.path == '/' %}
+                    active
+                    {% endif %}" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link 
+                    {% if request.path == '/about/' %}
+                    active  
+                    {% endif %}" aria-current="page" href="{% url 'about_page' %}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link 
+                    {% if request.path == '/contact/' %}
+                    active
+                    {% endif %}" aria-current="page" href="{% url 'contact_page' %}">Contact</a>
+                </li>
+                {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link 
+                    {% if request.path == '/dashboard/' %}
+                    active 
+                    {% endif %}" aria-current="page" href="{% url 'dashboard_page' %}">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link 
+                    {% if request.path == '/logout/' %}
+                    active
+                    {% endif %}" aria-current="page" href="{% url 'logout_page' %} " id="logout_confirm">Logout</a>
+                    <form id="logoutForm" action="{% url 'logout_page' %}" method="post" class="d-none"> {% csrf_token
+                        %} </form>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link 
+                    {% if request.path == '/create_blog/' %}
+                    active
+                    {% endif %}" aria-current="page" href="{% url 'create_blog' %}">Add Blog</a>
+                </li>
+
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link 
+                    {% if request.path == '/signup/' %}
+                    active
+                    {% endif %}" aria-current="page" href="{% url 'signup_page' %}">Signup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link 
+                    {% if request.path == '/login/' %}
+                    active
+                    {% endif %}" aria-current="page" href="{% url 'login_page' %}">Login</a>
+                </li>
+                {% endif %}
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control style2 me-2" type="search" placeholder="Search" aria-label="Search">
+            </form>
+
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,24 @@
+{% extends "Base.html" %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col-8 p-4 offset-2 my-4   chulbul">
+        <h3 class="text text-center">Sign-up form </h3>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div>
+                <div class="d-flex flex-column gap-2 m-3">
+                    {{form}}
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-secondary text-black fw-bold mb-2">Register</button>
+                <p>if you are registered user please login here <a href="{% url 'login_page' %}"
+                        class="text-primary">Login</a></p>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

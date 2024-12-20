@@ -1,0 +1,76 @@
+{% extends "Base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="col-12 col-md-8 offset-md-2 my-4 chulbul py-4 ">
+    <h3 class="text-center">Contact Us</h3>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="row mb-3">
+            <div class="col-12 col-md-6">
+                <label for="firstName" class="form-label">First Name:</label>
+                <input type="text" id="firstName" required name="first_name" class="form-control style2"
+                    placeholder="First name">
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="lastName" class="form-label">Last Name:</label>
+                <input type="text" id="lastName" required name="last_name" class="form-control style2 text-info"
+                    placeholder="Last name">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12 col-md-6">
+                <label for="inputEmail" class="form-label">Email:</label>
+                <input type="email" class="form-control required style2" id="inputEmail" name="email"
+                    placeholder="Email id">
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="mobileNumber" class="form-label">Mobile no:</label>
+                <input type="tel" id="mobileNumber" required name="mobile_number" class="form-control style2"
+                    placeholder="Mobile no.">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="message" class="form-label">Message:</label>
+            <textarea class="form-control p-2 style2" required id="message" name="message"
+                placeholder="Message"></textarea>
+        </div>
+        <button class="btn btn-outline-secondary mt-3 text fw-bold" type="submit">Send message</button>
+
+
+    </form>
+
+
+        <div class="row mt-2 text-end">
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-outline-warning btn-floating  m-1" href="#!" role="button">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+        
+                <!-- Twitter -->
+                <a class="btn btn-outline-warning btn-floating m-1" href="#!" role="button">
+                    <i class="fab fa-twitter"></i>
+                </a>
+        
+        
+        
+                <!-- Instagram -->
+                <a class="btn btn-outline-warning btn-floating m-1" href="#!" role="button">
+                    <i class="fab fa-instagram"></i>
+                </a>
+        
+                <!-- Linkedin -->
+                <a class="btn btn-outline-warning btn-floating m-1" href="#!" role="button">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+        
+                <!-- Github -->
+                <a class="btn btn-outline-warning btn-floating m-1" href="#!" role="button">
+                    <i class="fab fa-github"></i>
+                </a>
+            </section>
+        </div>
+</div>
+
+{% endblock %}
