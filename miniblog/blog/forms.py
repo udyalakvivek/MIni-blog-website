@@ -43,8 +43,16 @@ class LoginForm(AuthenticationForm):
         fields = ['username', 'password1']
         
         
+
+# For news latter subscription 
+class SubscriptionsForm(forms.Form):
+    sub_email = forms.EmailField(label='Email', max_length=200)
+
+
+
+
         
-# class user_profile(forms.ModelForm):
-    class Meta:
-        model = User
-        field =['pic'] 
+# # class user_profile(forms.ModelForm):
+#     class Meta:
+#         model = User
+#         field =['pic'] 

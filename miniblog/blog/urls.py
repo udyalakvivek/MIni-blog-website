@@ -14,6 +14,6 @@ urlpatterns = [
     path("delete_record/<int:id>/",views.delete_record, name= "delete_post" ),
     path("post=<int:id>/",views.single_data, name= "single_data" ),
     path("edit/<int:id>/", views.edit_blog, name='edit_post'),
-    
+    path('subscribe/',views.subscribe, name="subscribe" )
 
 ]

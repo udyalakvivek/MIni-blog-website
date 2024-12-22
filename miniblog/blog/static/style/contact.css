@@ -16,8 +16,7 @@ input{
 }
 .style3{
     box-shadow: none!important;
-    /* background-color: #44494e!important; */
-    border: none!important;
+    /* border: none!important; */
     outline: none!important;
 }
 

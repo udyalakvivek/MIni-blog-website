@@ -4,7 +4,13 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from .models import blog_post
 from django.contrib.auth.decorators import login_required
+# for subscription email
 from django.core.mail import send_mail
+from django.conf import settings
+from django.urls import reverse
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 
@@ -32,15 +38,15 @@ def about(request):
 #contact
 def contact(request):
     if request.method == 'POST':
-        name = request.POST.get('first_name')
-        # l_name = request.POST.get('last_name')
-        email = request.POST.get('email')
-        message = request.POST.get('message')
-        subject = 'New Contact Form Submission.'
-        message_body = f'Name: {name}\nEmail: {email}\nMessage: {message}'
-        from_email = 'example@gmail.com'
-        recipient_list = ['vivekudyalak@gmail.com']
-        send_mail(subject, message_body, from_email, recipient_list)
+        # name = request.POST.get('first_name')
+        # # l_name = request.POST.get('last_name')
+        # email = request.POST.get('email')
+        # message = request.POST.get('message')
+        # subject = 'New Contact Form Submission.'
+        # message_body = f'Name: {name}\nEmail: {email}\nMessage: {message}'
+        # from_email = 'example@gmail.com'
+        # recipient_list = ['vivekudyalak@gmail.com']
+        # send_mail(subject, message_body, from_email, recipient_list)
         return HttpResponse('Thank you for your message.')
         print("Result matlab contact form data = :", )
         
@@ -150,20 +156,7 @@ def delete_record(request , id):
     return render(request, 'confirm_delete.html', {'data':data})
     
     
-    
-    
-    
-    
-    # try:
-    #     data = blog_post.objects.get(id = id)
-    #     if request.method == 'POST':
-    #         data.delete()
-    #         print("Post is deleted successfully ")
-    #         return redirect('manage_post')
-    #     return render(request , 'confirm_delete.html', {'data': data})
-    # except blog_post.DoesNotExist:
-        
-    #     print(" Post does not exists")
+
 
 
 #dashboard
@@ -176,3 +169,54 @@ def user_dashboard(request):
         return render(request, 'dashboard.html' , {'posts' : posts})
     else:
         return HttpResponseRedirect('/login/')
+    
+    
+    
+
+
+# news latter subscription 
+
+def subscribe(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        print("Subscribe email ", email)
+        logger.debug(f"Received email: {email}")
+        if email:
+            try:
+                subject = 'Congratulations on Subscribing!'
+                message = f"""
+                Dear {email},
+
+                Congratulations on subscribing to our newsletter!
+
+                We are thrilled to have you with us. Here are some things you can look forward to:
+                - Weekly updates on the latest trends
+                - Exclusive insights and articles
+                - Special promotions and offers
+
+                If you have any questions, feel free to contact us. Please note that this is an automated email, and replies to this email address are not monitored.
+
+                Best regards,
+                [Your Company Name]
+
+                (no-reply)
+                
+                """
+                from_email = settings.EMAIL_HOST_USER
+                recipient_list = [email]
+                send_mail(
+                    subject,
+                    message,
+                    from_email,
+                    recipient_list,
+                    fail_silently=False,
+                )
+                return HttpResponse('Email sent successfully!')
+            except Exception as e:
+                logger.error(f"Error sending email: {e}")
+                return HttpResponse(f'Error sending email: {e}', status=500)
+        else:
+            logger.debug("No email provided")
+            return HttpResponse('No email provided', status=400)
+    logger.debug("Invalid request method")
+    return HttpResponse('Invalid request', status=400)

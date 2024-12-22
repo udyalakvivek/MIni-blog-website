@@ -47,17 +47,18 @@
 
             <!-- Section: Form -->
             <section>
-                <form action="">
+                <form method="post" action="{% url 'subscribe' %}">
+                    {% csrf_token %}
                     <div class="row d-flex justify-content-center align-items-center">
                         <div class="col-auto">
                             <p class="pt-2">
                                 <strong>Sign up for our newsletter</strong>
                             </p>
                         </div>
-
+            
                         <div class="col-md-5 col-12">
                             <div class="form-floating mb-4">
-                                <input type="email" id="form5Example24" required class="form-control style3"
+                                <input type="email" id="form5Example24" name="email" required class="form-control style3"
                                     placeholder="name@example.com">
                                 <label for="form5Example24">Email address</label>
                             </div>
@@ -70,6 +71,7 @@
                     </div>
                 </form>
             </section>
+
 
             <!-- Section: Text -->
 
