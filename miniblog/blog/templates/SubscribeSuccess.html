@@ -1,0 +1,17 @@
+{% extends "Base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="col-10 offset-1 my-4 p-3 text-center chulbul">
+    
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>Thanks for subscribing!👍👍 <br>
+            
+        </p>
+        <!-- <button class="btn btn-outline-danger" type="submit">Yes</button> -->
+        <a href="{% url 'about_page' %}" class="btn btn-outline-success">Okay</a>
+    </form>
+</div>
+
+{% endblock content %}

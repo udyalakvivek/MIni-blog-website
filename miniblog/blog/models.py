@@ -28,6 +28,11 @@ class blog_post(models.Model):
         return self.title
     
     
-#dashboard user profile 
-class user_profile(models.Model):
-    pic = models.ImageField(upload_to='images/')
+# #dashboard user profile 
+# class user_profile(models.Model):
+#     pic = models.ImageField(upload_to='images/')
+
+
+# contact Form data 
+class Contact_Form(models.Model):
+    pass
