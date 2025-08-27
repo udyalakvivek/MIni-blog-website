@@ -14,14 +14,16 @@ input{
     border: none!important;
     outline: none!important;
 }
+.style3{
+    box-shadow: none!important;
+    /* border: none!important; */
+    outline: none!important;
+}
 
 #message{
     border: none ;
     outline: none;
 }
 
-.left{
-    color:  red!important;
-    background-color: greenyellow!important;
-}
+
 

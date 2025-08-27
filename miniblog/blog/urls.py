@@ -1,8 +1,10 @@
 from django.urls import path
 from blog import views
-
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     path("",views.home, name= "home_page" ),
+    path("home/",views.home, name= "home_page" ),
     path("about/",views.about, name= "about_page" ),
     path("contact/",views.contact, name= "contact_page" ),
     path("dashboard/",views.user_dashboard, name= "dashboard_page" ),
@@ -16,5 +18,6 @@ urlpatterns = [
     path("edit/<int:id>/", views.edit_blog, name='edit_post'),
     path('subscribe/',views.subscribe, name="subscribe" ),
     path('success/',views.success, name= "success_subscribe"),
-
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

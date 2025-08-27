@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from .ckeditorconfig import *
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,8 +39,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_ckeditor_5",
     "blog",
 ]
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -116,8 +119,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
+# STATIC_ROOT = BASE_DIR / "staticfiles"
+# STATIC_URL = "static/"
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]   # agar static folder banaya ho
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
-STATIC_URL = "static/"
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -133,4 +142,3 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'chochaprasad@gmail.com'
 EMAIL_HOST_PASSWORD = 'tasu talq vlla xrwf'
-
