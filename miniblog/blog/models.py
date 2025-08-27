@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django_ckeditor_5.fields import CKEditor5Field
 
 # Create your models here.
 
@@ -16,7 +17,8 @@ class blog_post(models.Model):
         ('books', 'Books'),
     ] 
     title = models.CharField(max_length= 150)
-    desc = models.TextField()
+    # desc = models.TextField()
+    desc = CKEditor5Field(config_name='default')
     author = models.CharField(max_length= 100, default='Vivek..')
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     created_at = models.DateTimeField(default=timezone.now)

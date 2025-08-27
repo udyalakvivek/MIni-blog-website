@@ -2,20 +2,18 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import blog_post 
+from django_ckeditor_5.widgets import CKEditor5Widget
 
 
 class BlogPost_form(forms.ModelForm):
-
+    # desc = forms.CharField(widget=CKEditor5Widget(config_name='default'))
     class Meta:
         model = blog_post
         fields = ['title', 'desc','category']
-        widgets = {
-            'desc' : forms.Textarea(attrs = {'class': 'col-10'}),
-        }
-
-
-
-
+        # widgets = {
+        #     'desc' : forms.Textarea(attrs = {'class': 'col-10'}),
+        #     # 'desc': CKEditorWidget
+        # }
 
 
 class Register_form(UserCreationForm):
