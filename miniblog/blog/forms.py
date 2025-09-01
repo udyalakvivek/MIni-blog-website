@@ -6,15 +6,17 @@ from django_ckeditor_5.widgets import CKEditor5Widget
 
 
 class BlogPost_form(forms.ModelForm):
-    # desc = forms.CharField(widget=CKEditor5Widget(config_name='default'))
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["desc"].required = False
     class Meta:
         model = blog_post
         fields = ['title', 'desc','category']
-        # widgets = {
-        #     'desc' : forms.Textarea(attrs = {'class': 'col-10'}),
-        #     # 'desc': CKEditorWidget
-        # }
-
+        widgets = {
+            "desc": CKEditor5Widget(
+                attrs={"class": "django_ckeditor_5"}, config_name="extends"
+            )
+        }
 
 class Register_form(UserCreationForm):
     password1 = forms.CharField(
@@ -46,11 +48,3 @@ class LoginForm(AuthenticationForm):
 class SubscriptionsForm(forms.Form):
     sub_email = forms.EmailField(label='Email', max_length=200)
 
-
-
-
-        
-# # class user_profile(forms.ModelForm):
-#     class Meta:
-#         model = User
-#         field =['pic'] 
