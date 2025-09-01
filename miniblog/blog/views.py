@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 #home
 def home(request):
-    posts = blog_post.objects.all()
+    posts = blog_post.objects.all().order_by('-id')   
     return render(request, 'home.html', {'posts':posts})
 
 
@@ -86,6 +86,8 @@ def user_signup(request):
 
 #login
 def user_login(request):
+    # print("Cookies mila:", request.COOKIES)   # 👈 sab cookies print
+    # print("Session mila:", request.session.items())  
     if not request.user.is_authenticated:
         
         if request.method == 'POST':
@@ -97,6 +99,7 @@ def user_login(request):
                     login(request, user)
                     messages.success(request ,'you logged in successfully !')
                     print("user login success")
+                    print("Session ID after login:", request.session.session_key) 
                     return redirect('dashboard_page')
                 else:
                     messages.warning(request ,'you logged in fail !')
